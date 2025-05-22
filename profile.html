@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile Detail</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: #000;
+      color: #fff;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* 세로 중앙 */
+      align-items: center;     /* 가로 중앙 */
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .grid-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        linear-gradient(to right, rgba(0,91,255,0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,91,255,0.15) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+      pointer-events: none;
+      animation: gridMove 60s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0%   { background-position: 0 0,   0 0; }
+      100% { background-position: 40px 40px, 40px 40px; }
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      width: 90%;
+      padding: 2rem 3rem;
+      background: rgba(255,255,255,0.15);
+      border-radius: 0;
+      box-shadow:
+        0 0 0 3px rgba(0,91,255,0.3),
+        0 0 0 6px rgba(0,91,255,0.15);
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      text-align: left;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #005bff;
+      font-style: italic;
+      text-align: center;
+    }
+
+    section {
+      line-height: 1.5;
+      font-size: 1rem;
+      color: #eee;
+    }
+
+    section h3 {
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: #a0c4ff;
+      border-bottom: 1px solid #005bff;
+      padding-bottom: 0.3rem;
+    }
+
+    .button-group {
+      z-index: 3;
+      display: flex;
+      justify-content: center; /* 중앙 정렬 */
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .button-group button,
+    .button-group .label {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    button {
+      background-color: #ccc;
+      border: 2px solid #999;
+      color: #333;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      box-shadow: inset -2px -2px 0 #999, inset 2px 2px 0 #eee;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background-color: #bbb;
+      box-shadow: inset -1px -1px 0 #888, inset 1px 1px 0 #ddd;
+    }
+
+    .label {
+      color: #ccc;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        max-width: 90vw;
+        padding: 1.5rem 1.5rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      section {
+        font-size: 0.9rem;
+      }
+      .button-group button,
+      .button-group .label {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-overlay"></div>
+
+  <main>
+    <h2>PROFILE DETAIL</h2>
+
+    <section>
+      <h3>학력</h3>
+      <p>서울대학교 디자인학과 졸업 (2015–2019)</p>
+    </section>
+
+    <section>
+      <h3>이력</h3>
+      <p>ABC 디자인 회사 UI/UX 디자이너 (2019–2022)<br>
+      XYZ 테크 스타트업 시니어 디자이너 (2022–현재)</p>
+    </section>
+
+    <section>
+      <h3>스킬</h3>
+      <p>Figma, Sketch, Adobe XD, Photoshop, Illustrator, HTML/CSS, JavaScript 기본</p>
+    </section>
+  </main>
+
+  <div class="button-group">
+    <button id="prevBtn">이전</button>
+    <button id="nextBtn">다음 </button>
+  </div>
+
+  <script>
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    window.location.href = 'about.html'; // 이전 버튼 → about.html
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    window.location.href = 'portfolio.html'; // 다음 버튼 → portfolio.html
+  });
+</script>
+</body>
+</html>
