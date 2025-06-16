@@ -1,0 +1,453 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      background-color: black;
+      color: white;
+      position: relative;
+      background-color: #1a1a1a;
+      background-image: linear-gradient(0deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+       
+    }
+
+    #pixel-cursor {
+     position: fixed;
+     width: 10px;
+     height: 10px;
+     background-color: #fff;
+     z-index: 9999;
+     pointer-events: none;
+     transition: transform 0.05s linear;
+     mix-blend-mode: difference;
+    }   
+
+    /*테마별 배경색상 설정*/
+    /* 테마1: 블랙 + 흰 격자 */
+        body.theme1 {
+        background-color: #1a1a1a;
+        background-image: 
+            linear-gradient(0deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 20px 20px;
+        }
+
+        /* 테마2: 민트톤 + 진한 격자 */
+        body.theme2 {
+        background-color: #e3f9fb;
+        background-image: 
+            linear-gradient(0deg, rgba(0,90,100,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,90,100,0.05) 1px, transparent 1px);
+        background-size: 20px 20px;
+        }
+
+        /* 테마3: 베이지 + 브라운 격자 */
+        body.theme3 {
+        background-color: #f5f5dc;
+        background-image: 
+            linear-gradient(0deg, rgba(77,60,0,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(77,60,0,0.05) 1px, transparent 1px);
+        background-size: 20px 20px;
+        }
+
+        /* 테마4: 밝은 회색 + 진회색 격자 */
+        body.theme4 {
+        background-color: #f0f0f0;
+        background-image: 
+            linear-gradient(0deg, rgba(80,80,80,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(80,80,80,0.03) 1px, transparent 1px);
+        background-size: 20px 20px;
+        }
+
+
+    /* 테마별 카드 색상 설정 */
+    body.theme1 .stack .card {
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 0 0 0 1px #333333;
+    }
+    body.theme2 .stack .card {
+      background: #d0ffff;
+      color: #015a6d;
+      box-shadow: 0 0 0 2px #00bfd8;
+    }
+    body.theme3 .stack .card {
+      background: #fef1dc;
+      color: #4d3c00;
+      box-shadow: 0 0 0 1px #c1a766;
+    }
+    body.theme4 .stack .card {
+      background: #f8f9fa;
+      color: #333;
+      box-shadow: 0 0 0 1px #ccc;
+    }
+
+    /* 테마별 .side 색상 설정 */
+    body.theme1 .side {
+      color: #ffffff;
+    }
+
+    body.theme2 .side {
+      color: #015a6d;
+    }
+
+    body.theme3 .side {
+      color: #4d3c00;
+    }
+
+    body.theme4 .side {
+      color: #333333;
+    }
+
+
+    .stack-container {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 2.7rem; /* row-gap과 column-gap 동시에 조정 */
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      place-content: center;
+    }
+
+    .stack {
+      position: relative;
+      cursor: pointer;
+    }
+
+     /* 각 스택별 카드 크기 다르게 지정 */
+    .stack:nth-child(1) { width: 180px; height: 120px; }
+    .stack:nth-child(2) { width: 200px; height: 140px; }
+    .stack:nth-child(3) { width: 140px; height: 110px; }
+    .stack:nth-child(4) { width: 220px; height: 150px; }
+    .stack:nth-child(5) { width: 180px; height: 170px; }
+    .stack:nth-child(6) { width: 210px; height: 130px; }
+    .stack:nth-child(7) { width: 190px; height: 125px; }
+    .stack:nth-child(8) { width: 175px; height: 115px; }
+    .stack:nth-child(9) { width: 185px; height: 135px; }
+
+    .stack .card {
+      position: absolute;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 16px;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    /* 쌓인 카드 간 간격을 넓힘 (폭 있게!) */
+    /* 기본 카드 간격 */
+    .stack .card:nth-child(1) {
+      z-index: 3;
+      top: 0;
+      left: 0;
+    }
+    .stack .card:nth-child(2) {
+      top: 8px;
+      left: 8px;
+      z-index: 2;
+    }
+    .stack .card:nth-child(3) {
+      top: 16px;
+      left: 16px;
+      z-index: 1;
+    }
+    .stack .card:nth-child(4) {
+      top: 24px;
+      left: 24px;
+      z-index: 0;
+    }
+
+    /* 💥 hover 효과 */
+    .stack:hover .card:nth-child(1) {
+      transform: translate(-4px, -4px);
+    }
+    .stack:hover .card:nth-child(2) {
+      transform: translate(1px, 2px) rotate(-1.5deg);
+    }
+    .stack:hover .card:nth-child(3) {
+      transform: translate(2px, 3px) rotate(1.5deg);
+    }
+    .stack:hover .card:nth-child(4) {
+      transform: translate(1px, 1px) rotate(-1deg);
+    }
+
+    
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    
+
+    .side {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      color: inherit;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 260px;
+      width: 48px;
+      overflow: hidden; /* 유지 */
+      cursor: pointer;
+    }
+
+    .side span {
+      position: absolute;
+      text-align: center;
+      transition: opacity 0.3s ease;
+      white-space: nowrap; /* ✅ 글 잘림 방지 핵심 */
+      max-width: none;     /* ✅ 필요시 제한 없애기 */
+      overflow: visible;   /* ✅ 혹시 몰라 추가 */
+    }
+
+    .side .label {
+      opacity: 1;
+    }
+
+    .side .info {
+      opacity: 0;
+    }
+
+    .side:hover .label {
+      opacity: 0;
+    }
+
+    .side:hover .info {
+      opacity: 1;
+    }
+
+    .side.phone { left: 10px; }
+    .side.email { right: 10px; }
+
+    .corner-btn {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border: 2px solid currentColor;
+      cursor: pointer;
+      border-radius: 6px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .corner-btn:hover { background-color: currentColor; color: #fff; }
+    .corner-btn.tl { top: 10px; left: 10px; color: #fff; background-color: #1a1a1a; }
+    .corner-btn.tr { top: 10px; right: 10px; color: #015a6d; background-color: #9df9fc; }
+    .corner-btn.bl { bottom: 10px; left: 10px; color: #4d3c00; background-color: #f5f5dc; }
+    .corner-btn.br { bottom: 10px; right: 10px; color: #333; background-color: #f0f0f0; }
+
+    #contactBtn {
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 14px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    body.theme1 #contactBtn {
+      color: #ffffff;
+    }
+    body.theme2 #contactBtn {
+      color: #015a6d;
+    }
+    body.theme3 #contactBtn {
+      color: #4d3c00;
+    }
+    body.theme4 #contactBtn {
+      color: #333333;
+    }
+
+    #popup {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: black;
+      padding: 40px 35px;
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      width: 480px;
+      max-width: 95vw;
+      z-index: 200;
+      display: none;
+      font-family: 'Pretendard', sans-serif;
+    }
+
+    #popup h3 {
+      margin-bottom: 30px;
+      font-size: 24px;
+      text-align: center;
+      color: #222;
+    }
+
+    #contactForm label {
+      font-size: 15px;
+      color: #333;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    #contactForm input,
+    #contactForm textarea {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 15px;
+      margin-top: 6px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    #contactForm input:focus,
+    #contactForm textarea:focus {
+      border-color: #00bfd8;
+    }
+
+    #contactForm textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    #contactForm button[type="submit"] {
+      width: 100%;
+      background-color: #00bfd8;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+      font-size: 15px;
+    }
+
+    #contactForm button[type="submit"]:hover {
+      background-color: #019aae;
+    }
+
+    #closePopup {
+      background: none;
+      border: none;
+      color: #777;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 12px;
+      float: right;
+      text-decoration: underline;
+    }
+
+    #popupMessage {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #222;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      display: none;
+      z-index: 300;
+      font-size: 15px;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 500;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.9);
+    }
+
+.modal-content {
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  margin: 5% auto;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+  animation: zoomFade 0.4s ease forwards;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 600;
+}
+@keyframes zoomFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#aboutModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+#aboutModal iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+#closeAbout {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
