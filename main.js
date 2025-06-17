@@ -56,24 +56,6 @@ contactForm.addEventListener('submit', function (e) {
     });
 });
 
-// ✅ About Me 모달
-const aboutModal = document.getElementById('aboutModal');
-const closeAbout = document.getElementById('closeAbout');
-
-function openAboutModal() {
-  aboutModal.style.display = 'block';
-}
-
-closeAbout.addEventListener('click', () => {
-  aboutModal.style.display = 'none';
-});
-
-aboutModal.addEventListener('click', (e) => {
-  if (e.target === aboutModal) {
-    aboutModal.style.display = 'none';
-  }
-});
-
 // ✅ 이미지 모달
 function openModal(imageSrc) {
   const modal = document.getElementById('imageModal');
@@ -88,4 +70,24 @@ document.querySelector('.modal-close').addEventListener('click', () => {
 
 document.getElementById('imageModal').addEventListener('click', () => {
   document.getElementById('imageModal').style.display = 'none';
+});
+
+// ✅ iframe 기반 About/Works 모달
+const aboutModal = document.getElementById('aboutModal');
+const closeAbout = document.getElementById('closeAbout');
+
+function openAboutModal(page = 'about.html') {
+  const iframe = aboutModal.querySelector("iframe");
+  iframe.src = page;
+  aboutModal.style.display = 'block';
+}
+
+closeAbout.addEventListener('click', () => {
+  aboutModal.style.display = 'none';
+});
+
+aboutModal.addEventListener('click', (e) => {
+  if (e.target === aboutModal) {
+    aboutModal.style.display = 'none';
+  }
 });

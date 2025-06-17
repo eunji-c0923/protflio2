@@ -1,0 +1,243 @@
+<!-- bunny-drama.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Visual Works – BUNNY DRAMA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+        background-color: #fff;
+        margin: 0;
+        padding: 40px 20px;
+        font-family: 'Pretendard', sans-serif;
+        color: #333333;
+        overflow-y: scroll;
+        scrollbar-width: none;            /* Firefox */
+        -ms-overflow-style: none;         /* IE 10+ */
+    }
+
+    body::-webkit-scrollbar {
+        width: 0px;                        /* Chrome, Safari */
+        background: transparent;          /* 안 보이게 */
+    }
+    
+    .visual-works-wrapper {
+      max-width: 960px;
+      margin: auto;
+    }
+    .vw-title h2 {
+      font-size: 2.4rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    .vw-title.bunny h2 {
+      color: #e05297;
+      background: linear-gradient(to right, #ffb6c1, #e05297);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .vw-title.hwakyak h2 {
+      color: #1a8e8e;
+    }
+    .vw-title.lime h2 {
+      color: #84c441;
+    }
+    .vw-sub {
+      font-size: 1.1rem;
+      color: #888;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .vw-image {
+      margin: 30px 0;
+      text-align: center;
+    }
+    .vw-image img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+    }
+    .vw-caption {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+    .vw-description {
+      margin-top: 50px;
+    }
+    .vw-description ul {
+      padding-left: 1.2rem;
+      line-height: 1.8;
+    }
+    .vw-quote {
+      margin: 60px 0 120px;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #555;
+      text-align: center;
+    }
+    .vw-quote::after {
+      
+      display: block;
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #999;
+      font-style: normal;
+    }
+    .vw-summary-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 100px;
+    }
+    .vw-summary-card {
+      flex: 1 1 30%;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .vw-summary-card h4 {
+      margin-top: 0;
+      color: #333;
+    }
+    .vw-summary-card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+    hr {
+      margin: 80px auto;
+      width: 40%;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="visual-works-wrapper">
+
+    <!-- ✅ 첫 번째 작품 -->
+    <div class="vw-title bunny">
+      <h2>BUNNY DRAMA</h2>
+      <p class="vw-sub">하니의 감정이 폭발하는 순간, 핑크로 번지는 키치 드라마</p>
+    </div>
+
+    <div class="vw-image">
+      <img src="img/1-2.jpg" alt="카페 창문 목업" />
+      <p class="vw-caption">실제 이벤트 현장을 상상하며 제작된 윈도우 배너 목업</p>
+    </div>
+
+    <div class="vw-image">
+      <img src="img/1.jpg" alt="BUNNY DRAMA 컵홀더 디자인" />
+    </div>
+
+    <div class="vw-image">
+      <img src="img/1-4.jpg" alt="BUNNY DRAMA 포스터 디자인" />
+    </div>
+
+    <div class="vw-description">
+      <h3>🌈 프로젝트 요약</h3>
+      <ul>
+        <li><strong>키워드:</strong> 🐰 Bunny / 💗 Pink Drama / ✨ Y2K / 🎀 Cute & Edgy</li>
+        <li><strong>목적:</strong> 아이돌 '하니'의 생일을 기념한 팬메이드 굿즈 디자인</li>
+        <li><strong>컨셉:</strong> Y2K + 키치 + 러블리 감성의 드라마틱 연출</li>
+        <li><strong>활용:</strong> 생일카페 / 굿즈 패키징 / SNS 콘텐츠용</li>
+        <li><strong>툴:</strong> Adobe Photoshop | <strong>기간:</strong> 약 1일</li>
+      </ul>
+    </div>
+    <div class="vw-quote">
+      “이 디자인은 단순한 귀여움이 아닌, 팬의 감정을 시각 언어로 풀어내는 실험이었습니다.”
+    </div>
+
+    <hr />
+
+    <!-- ✅ 두 번째 작품 – 花客月饌 (화객월찬) -->
+    <div class="vw-title hwakyak">
+      <h2>花客月饌</h2>
+      <p class="vw-sub">정적인 수면 위, 감정을 담은 팬메이드 굿즈 시리즈</p>
+    </div>
+
+    <div class="vw-image">
+      <img src="img/2.jpg" alt="화객월찬 일러스트북 목업" />
+    </div>
+
+    <div class="vw-image">
+      <img src="img/2-1.jpg" alt="화객월찬 젤캔들 패키지 목업" />
+      <p class="vw-caption">젤캔들 + 시향카드 + 전용 박스로 구성된 굿즈 세트</p>
+    </div>
+
+    <div class="vw-image">
+      <img src="img/2-2.jpg" alt="화객월찬 포스터" />
+    </div>
+
+    <div class="vw-description">
+      <h3>🌈 프로젝트 요약</h3>
+      <ul>
+        <li><strong>키워드:</strong> 🌕 달빛 / 🐟 금붕어 / 💧 수면 / ✨ 감성 일러스트 / 🍃 청량 & 정적</li>
+        <li><strong>목적:</strong> 아티스트의 분위기에 어울리는 팬메이드 굿즈 디자인 및 패키징</li>
+        <li><strong>컨셉:</strong> 수중 테마 + 서정적 일러스트 + 몽환적 연출</li>
+        <li><strong>활용:</strong> 팬북 / 시향지 / 젤캔들 굿즈 / 전시 연출 키트</li>
+        <li><strong>툴:</strong> Adobe Photoshop, Illustrator | <strong>기간:</strong> 약 2~3일</li>
+      </ul>
+    </div>
+
+    <div class="vw-quote">
+      “이 디자인은 감정을 시각으로 번역하는 섬세한 시도였습니다.<br>  
+      花客月饌은 그저 굿즈가 아닌, 감정을 담은 선물입니다.”
+    </div>
+
+    <hr />
+
+    <!-- ✅ 세 번째 작품 – Lime Bloom -->
+    <div class="vw-title lime">
+      <h2>Lime Bloom </h2>
+      <p class="vw-sub">a body made of bloom – 빛과 생명이 피어나는 감정의 순간</p>
+    </div>
+
+    <div class="vw-image">
+      <img src="img/3-1.jpg" alt="Lime Bloom 포스터 목업" />
+    </div>
+
+    <div class="vw-image">
+      <img src="img/3.jpg" alt="디지털 배경화면 목업" />
+      <p class="vw-caption">디지털 굿즈로도 활용 가능한 감성 배경화면 시리즈</p>
+    </div>
+
+    <div class="vw-description">
+      <h3>🌈 프로젝트 요약</h3>
+      <ul>
+        <li><strong>키워드:</strong> 🌿 Bloom / 💫 Glow / ✨ Ethereal / 📱 Digital + Paper / 🧼 Light Fantasy</li>
+        <li><strong>목적:</strong> 인물의 분위기와 라이트 판타지 감성을 결합한 포스터 디자인</li>
+        <li><strong>컨셉:</strong> 빛 + 생명감 + 정적의 흐름이 어우러진 감성 일러스트</li>
+        <li><strong>활용:</strong> 아트포스터 / 배경화면 / 전시용 디지털 콘텐츠 / 엽서</li>
+        <li><strong>툴:</strong> Adobe Photoshop | <strong>기간:</strong> 약 1일</li>
+      </ul>
+    </div>
+
+    <div class="vw-quote">
+      “Lime Bloom은 몸이 아니라 감정이 피어나는 순간을 시각화한 작업입니다.”
+    </div>
+
+    <!-- ✅ 요약 카드 섹션 -->
+    <div class="vw-summary-cards">
+      <div class="vw-summary-card">
+        <h4>BUNNY DRAMA</h4>
+        <p>하니의 감정이 폭발하는 순간, 핑크로 번지는 키치한 굿즈 프로젝트</p>
+      </div>
+      <div class="vw-summary-card">
+        <h4>花客月饌</h4>
+        <p>정적인 수면과 몽환적인 테마로 구성된 서정적 굿즈 세트</p>
+      </div>
+      <div class="vw-summary-card">
+        <h4>Lime Bloom</h4>
+        <p>감정이 피어나는 순간을 시각화한 감성 아트워크와 디지털 콘텐츠</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
