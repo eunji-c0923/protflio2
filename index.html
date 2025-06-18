@@ -18,7 +18,7 @@
 
   <div id="aboutModal" class="modal">
     <span class="modal-close" id="closeAbout">&times;</span>
-    <iframe src="about.html" frameborder="0"></iframe>
+    <iframe src="" frameborder="0"></iframe>
   </div>
 
   <div class="stack-container">
@@ -35,10 +35,10 @@
       <div class="card"></div>                             <!--툴 사용법,아이디어 흐름,플로우차트,무드보드,디자인시스템 등-->
     </div>                                                 <!--작업과정 gif나 툴 화면 캡쳐 등 비포-에프터로 비교-->
 
-    <div class="stack strike" onclick="openModal('img/behind.jpg')">
-      <div class="card">Behind the<br>Scenes</div>    <!--과정 중심 기록@ 실패도 포함-->
+    <div class="stack">
+      <div class="card"><span class="line-through">Behind the<br>Scenes</span></div>    <!--과정 중심 기록@ 실패도 포함-->
       <div class="card"></div>
-      <div class="card"></div>
+      <div class="card"></div>     <!--죽여놈-->
     </div>
 
   <div class="stack" onclick="openAboutModal('bunny-drama.html')">
@@ -46,7 +46,7 @@
     <div class="card"></div>
   </div>
 
-    <div class="stack" onclick="openModal('img/branding.jpg')">
+    <div class="stack" onclick="openAboutModal('branding.html')">
       <div class="card">Branding Design</div>     <!--타이포,로고디자인 시안 ,패키징,브랜딩 프로젝트/패키지/굿즈 등 -->
       <div class="card"></div>                    <!--브랜드 컨셉을 어떻게 설계했는지 함께 보여주는 게 핵심-->
       <div class="card"></div>
@@ -59,12 +59,13 @@
       <div class="card"></div>
     </div>
 
-    <div class="stack" onclick="openModal('img/scenes.jpg')">
-      <div class="card">Scenes<br>I Remember</div>       <!--촬영한 사진,작업의 영감이 된 장면들(짧은 텍스트에 설명 넣으면 좋음)-->
+    <div class="stack" onclick="openAboutModal('scenes.html')">
+      <div class="card">Scenes<br>I Remember</div>
       <div class="card"></div>
       <div class="card"></div>
     </div>
 
+    
     <div class="stack" onclick="openModal('img/video.jpg')">
       <div class="card">Video</div>                      <!--영상 브라우저에 삽입하거나 유튜브 링크도 좋음-->
       <div class="card"></div>
