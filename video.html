@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIDEO | Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Pretendard&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+
+      /* 👇 격자무늬 배경 추가 */
+      background-image: 
+        linear-gradient(0deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    header {
+      padding: 2rem;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    .video-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .video-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+    }
+
+    .video-info {
+      padding: 1.8rem 2rem;
+    }
+
+    .video-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .video-desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .video-desc p {
+      margin: 0.5rem 0;
+    }
+
+    .more-btn-wrapper {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .more-btn {
+      display: inline-block;
+      background-color: #222;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.75rem 1.8rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .more-btn:hover {
+      background-color: #444;
+    }
+
+    @media (max-width: 768px) {
+      .video-info {
+        padding: 1.2rem;
+      }
+      .video-title {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>VIDEO</header>
+
+  <section class="video-container">
+    <div class="video-card">
+      <iframe class="video-frame"
+        src="https://www.youtube.com/embed/r6uuBpImlAg" allowfullscreen></iframe>
+      <div class="video-info">
+        <div class="video-title">[프로젝트명] 일상 브이로그</div>
+        <div class="video-desc">
+          <p><strong>제작 목적:</strong> 자연스러운 일상을 감각적으로 기록하여 감성 공유</p>
+          <p><strong>툴:</strong> Filmora 사용 / Premiere Pro 학습 예정</p>
+          <p><strong>참여 범위:</strong> 촬영 · 기획 · 편집 등 전 과정 단독 진행</p>
+          <p><strong>포인트:</strong> 일상 속 순간을 부드러운 전환과 음악으로 연결해 따뜻한 분위기 연출</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 더보기 버튼 -->
+    <div class="more-btn-wrapper">
+      <a class="more-btn" href="https://www.youtube.com/@me_gwakjjoki" target="_blank" rel="noopener noreferrer">더보기</a>
+    </div>
+  </section>
+
+</body>
+</html>

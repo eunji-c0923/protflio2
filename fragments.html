@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fragments | Mouse-based Scroll</title>
+  <style>
+    body {
+      font-family: 'Pretendard', sans-serif;
+      margin: 0;
+      background-color: #f8f8f8;
+      color: #333;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 40px;
+    }
+
+    .scroll-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .scroll-track {
+      display: flex;
+      gap: 30px;
+      transition: transform 0.3s ease-out;
+      padding-bottom: 10px;
+      will-change: transform;
+    }
+
+    .frag-card {
+      min-width: 240px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .frag-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+    }
+
+    .frag-caption {
+      padding: 16px;
+      font-size: 0.95rem;
+      text-align: center;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Fragments</h1>
+
+  <div class="scroll-wrapper" id="scrollWrapper">
+    <div class="scroll-track" id="scrollTrack">
+      <!-- 15장 카드 -->
+      <div class="frag-card"><img src="img/fragment1.jpg"><div class="frag-caption">Fragment 1</div></div>
+      <div class="frag-card"><img src="img/fragment2.jpg"><div class="frag-caption">Fragment 2</div></div>
+      <div class="frag-card"><img src="img/fragment3.jpg"><div class="frag-caption">Fragment 3</div></div>
+      <div class="frag-card"><img src="img/fragment4.jpg"><div class="frag-caption">Fragment 4</div></div>
+      <div class="frag-card"><img src="img/fragment5.jpg"><div class="frag-caption">Fragment 5</div></div>
+      <div class="frag-card"><img src="img/fragment6.jpg"><div class="frag-caption">Fragment 6</div></div>
+      <div class="frag-card"><img src="img/fragment7.jpg"><div class="frag-caption">Fragment 7</div></div>
+      <div class="frag-card"><img src="img/fragment8.jpg"><div class="frag-caption">Fragment 8</div></div>
+      <div class="frag-card"><img src="img/fragment9.jpg"><div class="frag-caption">Fragment 9</div></div>
+      <div class="frag-card"><img src="img/fragment10.jpg"><div class="frag-caption">Fragment 10</div></div>
+      <div class="frag-card"><img src="img/fragment11.jpg"><div class="frag-caption">Fragment 11</div></div>
+      <div class="frag-card"><img src="img/fragment12.jpg"><div class="frag-caption">Fragment 12</div></div>
+      <div class="frag-card"><img src="img/fragment13.jpg"><div class="frag-caption">Fragment 13</div></div>
+      <div class="frag-card"><img src="img/fragment14.jpg"><div class="frag-caption">Fragment 14</div></div>
+      <div class="frag-card"><img src="img/fragment15.jpg"><div class="frag-caption">Fragment 15</div></div>
+    </div>
+  </div>
+
+  <script>
+    const wrapper = document.getElementById('scrollWrapper');
+
+    let animationFrame;
+
+    function onMouseMove(e) {
+      const rect = wrapper.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const center = rect.width / 2;
+      const maxSpeed = 2.5;
+
+      // 마우스 위치를 기준으로 속도 계산 (-2.5 ~ 2.5)
+      const offset = (mouseX - center) / center;
+      const speed = offset * maxSpeed;
+
+      cancelAnimationFrame(animationFrame);
+      animateScroll(speed);
+    }
+
+    function animateScroll(speed) {
+      wrapper.scrollLeft += speed;
+      animationFrame = requestAnimationFrame(() => animateScroll(speed));
+    }
+
+    wrapper.addEventListener('mouseenter', () => {
+      wrapper.addEventListener('mousemove', onMouseMove);
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      cancelAnimationFrame(animationFrame);
+      wrapper.removeEventListener('mousemove', onMouseMove);
+    });
+  </script>
+
+</body>
+</html>
