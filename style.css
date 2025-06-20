@@ -468,19 +468,17 @@
   }
 
   .stack-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    padding: 20px 0;
-    height: auto;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* ✅ 두 열로 카드 나열 */
+    gap: 20px;
+    padding: 20px;
+    place-content: center;
   }
 
   .stack {
-    width: 90vw !important;
+    width: 100% !important;  /* 그리드 셀에 맞추기 */
     height: auto !important;
-    aspect-ratio: 3 / 2; /* 비율 유지하면서 유동적으로 */
+    aspect-ratio: 3 / 2;      /* 비율 유지 */
   }
 
   .stack .card {
