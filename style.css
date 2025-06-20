@@ -461,36 +461,37 @@
 }
 
 @media screen and (max-width: 480px) {
-  body {
-    overflow: auto;
-    height: auto;
-    width: auto;
+  html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    justify-content: center;  /* 가로 중앙 */
+    align-items: center;      /* 세로 중앙 */
+    overflow: auto;
   }
 
   .stack-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3열 유지 */
-    gap: 12px;
-    padding: 20px;
-    height: auto;
-    width: fit-content;  /* ✅ 카드 폭만큼만 */
-    margin: 0 auto;       /* ✅ 가운데 정렬 핵심 */
+    grid-template-columns: repeat(3, 1fr); /* 3열 고정 */
+    gap: 24px;                              /* 카드 사이 간격 넓힘 */
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
     place-items: center;
     justify-content: center;
+    align-content: center;
   }
 
   .stack {
-    width: 80px !important;   /* ✅ 카드 스택 너비 줄임 */
-    height: 60px !important;  /* ✅ 카드 스택 높이 줄임 */
+    width: 90px !important;
+    height: 70px !important;
   }
 
   .stack .card {
-    font-size: 10px;
-    padding: 6px;
+    font-size: 11px;
+    padding: 8px;
   }
 
   .corner-btn {
@@ -505,7 +506,7 @@
 
   #contactBtn {
     font-size: 10px;
-    bottom: 6px;
+    bottom: 10px;
   }
 
   #popup {
