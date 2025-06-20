@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Projects</title>
+  <style>
+    /* 전체 배경: 격자무늬 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', sans-serif;
+      background-color: #f9f9f9;
+      background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+      background-size: 20px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .project-card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 700px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .project-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .project-desc {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .project-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background-color: #111;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .project-btn:hover {
+      background-color: #333;
+    }
+
+    .download-btn {
+      background-color: #0099cc;
+    }
+
+    .download-btn:hover {
+      background-color: #0077aa;
+    }
+  </style>
+</head>
+<body>
+  <div class="project-card">
+    <div class="project-title">📂 Web Projects Documentation</div>
+    <div class="project-desc">
+      이 프로젝트는 포트폴리오용 웹 작업 전체 내용을 정리한 문서입니다.<br />
+      시연 링크, 기능 설명, PPT 포함 PDF를 아래 버튼으로 확인하세요.
+    </div>
+    <div class="btn-group">
+      <a href="https://zerosblue7717-1747182351240.atlassian.net/wiki/x/OgEB" 
+         target="_blank" 
+         class="project-btn">
+        🔗 Confluence 문서 보기
+      </a>
+      <a href="assets/오늘_머먹조_.pdf" 
+         download 
+         class="project-btn download-btn">
+        📄 PDF 다운로드
+      </a>
+    </div>
+  </div>
+</body>
+</html>
