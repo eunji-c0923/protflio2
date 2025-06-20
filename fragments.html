@@ -2,124 +2,186 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fragments | Mouse-based Scroll</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fragments – Full View</title>
   <style>
+    * { box-sizing: border-box; }
     body {
-      font-family: 'Pretendard', sans-serif;
       margin: 0;
-      background-color: #f8f8f8;
+      font-family: 'Pretendard', sans-serif;
+      background: #f9f9f9;
       color: #333;
-      padding: 60px 20px;
+    }
+
+    .fragments {
+      padding: 60px 30px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
       margin-bottom: 40px;
     }
 
-    .scroll-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      overflow: hidden;
-      white-space: nowrap;
-      position: relative;
-      padding: 20px 0;
+    .tab-btn {
+      padding: 10px 20px;
+      background: #eee;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
     }
 
-    .scroll-track {
+    .tab-btn.active {
+      background: #222;
+      color: #fff;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
       display: flex;
-      gap: 30px;
-      transition: transform 0.3s ease-out;
-      padding-bottom: 10px;
-      will-change: transform;
+      flex-direction: column;
+      gap: 64px;
+      align-items: center;
     }
 
-    .frag-card {
-      min-width: 240px;
-      background: #fff;
+    .work-item {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .work-item img {
+      width: 100%;
+      max-width: 720px;
+      height: auto;
       border-radius: 16px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
-      overflow: hidden;
-      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
 
-    .frag-card img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
+    .work-item img:hover {
+      transform: scale(1.02);
     }
 
-    .frag-caption {
-      padding: 16px;
-      font-size: 0.95rem;
-      text-align: center;
-      color: #666;
+    .caption {
+      margin-top: 16px;
+      font-size: 16px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
 <body>
+  <section class="fragments">
+    <h1>Fragments</h1>
+    <p class="subtitle">완성되지 못했거나, 마음에 들지 않았던 그 조각들</p>
 
-  <h1>Fragments</h1>
-
-  <div class="scroll-wrapper" id="scrollWrapper">
-    <div class="scroll-track" id="scrollTrack">
-      <!-- 15장 카드 -->
-      <div class="frag-card"><img src="img/fragment1.jpg"><div class="frag-caption">Fragment 1</div></div>
-      <div class="frag-card"><img src="img/fragment2.jpg"><div class="frag-caption">Fragment 2</div></div>
-      <div class="frag-card"><img src="img/fragment3.jpg"><div class="frag-caption">Fragment 3</div></div>
-      <div class="frag-card"><img src="img/fragment4.jpg"><div class="frag-caption">Fragment 4</div></div>
-      <div class="frag-card"><img src="img/fragment5.jpg"><div class="frag-caption">Fragment 5</div></div>
-      <div class="frag-card"><img src="img/fragment6.jpg"><div class="frag-caption">Fragment 6</div></div>
-      <div class="frag-card"><img src="img/fragment7.jpg"><div class="frag-caption">Fragment 7</div></div>
-      <div class="frag-card"><img src="img/fragment8.jpg"><div class="frag-caption">Fragment 8</div></div>
-      <div class="frag-card"><img src="img/fragment9.jpg"><div class="frag-caption">Fragment 9</div></div>
-      <div class="frag-card"><img src="img/fragment10.jpg"><div class="frag-caption">Fragment 10</div></div>
-      <div class="frag-card"><img src="img/fragment11.jpg"><div class="frag-caption">Fragment 11</div></div>
-      <div class="frag-card"><img src="img/fragment12.jpg"><div class="frag-caption">Fragment 12</div></div>
-      <div class="frag-card"><img src="img/fragment13.jpg"><div class="frag-caption">Fragment 13</div></div>
-      <div class="frag-card"><img src="img/fragment14.jpg"><div class="frag-caption">Fragment 14</div></div>
-      <div class="frag-card"><img src="img/fragment15.jpg"><div class="frag-caption">Fragment 15</div></div>
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="unfinished">미완성</button>
+      <button class="tab-btn" data-tab="rejected">아쉬운</button>
+      <button class="tab-btn" data-tab="etc">기타</button>
     </div>
-  </div>
+
+    <!-- Tab Content: 미완성 -->
+    <div class="tab-content active" id="unfinished">
+      <div class="work-item">
+        <img src="img/41.jpg" alt="미완성1">
+        
+      </div>
+      <div class="work-item">
+        <img src="img/42.jpg" alt="미완성2">
+        <p class="caption">방향을 잡지 못해 미완성 된 홈페이지.</p>
+      </div>
+    </div>
+
+    <!-- Tab Content: 별로인 -->
+    <div class="tab-content" id="rejected">
+      <div class="work-item">
+        <img src="img/43.jpg" alt="아쉬운1">
+        <p class="caption">완성했지만 마음에 들지 않았던 팜플렛.</p>
+      </div>
+      <div class="work-item">
+        <img src="img/44.jpg" alt="아쉬운2">
+        <p class="caption">최종 채택이 되었지만 아쉬운 디자인.</p>
+      </div>
+      <div class="work-item">
+        <img src="img/45.jpg" alt="아쉬운3">
+        <p class="caption">기획과 맞지 않아 폐기된 작업물.</p>
+      </div>
+      <div class="work-item">
+        <img src="img/46.jpg" alt="아쉬운4">
+        <p class="caption">디자인은 괜찮았지만 매칭 실패.</p>
+      </div>
+      <div class="work-item">
+        <img src="img/52.jpg" alt="아쉬운5">
+        <p class="caption">과한 연출로 어긋난 시안.</p>
+      </div>
+    </div>
+
+    <!-- Tab Content: 기타 -->
+    <div class="tab-content" id="etc">
+      <div class="work-item">
+        <img src="img/18.jpg" alt="기타1">
+        <p class="caption">실험적 색감 연습.</p>
+      </div>
+      <div class="work-item">
+        <img src="img/19.jpg" alt="기타2">
+        <p class="caption">촬영의도와 벗어난 컨셉</p>
+      </div>
+      <div class="work-item">
+        <img src="img/20.jpg" alt="기타3">
+        <p class="caption">보정 연습용 작업.</p>
+      </div>
+      <div class="work-item">
+        <img src="img/21.jpg" alt="기타4">
+        <p class="caption">보정 연습용 작업.</p>
+      </div>
+      <div class="work-item">
+        <img src="img/22.jpg" alt="기타5">
+        <p class="caption">레이아웃 테스트.</p>
+      </div>
+    </div>
+  </section>
 
   <script>
-    const wrapper = document.getElementById('scrollWrapper');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-    let animationFrame;
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-    function onMouseMove(e) {
-      const rect = wrapper.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const center = rect.width / 2;
-      const maxSpeed = 2.5;
-
-      // 마우스 위치를 기준으로 속도 계산 (-2.5 ~ 2.5)
-      const offset = (mouseX - center) / center;
-      const speed = offset * maxSpeed;
-
-      cancelAnimationFrame(animationFrame);
-      animateScroll(speed);
-    }
-
-    function animateScroll(speed) {
-      wrapper.scrollLeft += speed;
-      animationFrame = requestAnimationFrame(() => animateScroll(speed));
-    }
-
-    wrapper.addEventListener('mouseenter', () => {
-      wrapper.addEventListener('mousemove', onMouseMove);
-    });
-
-    wrapper.addEventListener('mouseleave', () => {
-      cancelAnimationFrame(animationFrame);
-      wrapper.removeEventListener('mousemove', onMouseMove);
+        tabContents.forEach(c => c.classList.remove('active'));
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
     });
   </script>
-
 </body>
 </html>
