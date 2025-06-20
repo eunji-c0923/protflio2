@@ -459,3 +459,75 @@
 .line-through {
   text-decoration: line-through;
 }
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow: auto;
+    height: auto;
+    width: auto;
+  }
+
+  .stack-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 0;
+    height: auto;
+    width: 100%;
+  }
+
+  .stack {
+    width: 90vw !important;
+    height: auto !important;
+    aspect-ratio: 3 / 2; /* 비율 유지하면서 유동적으로 */
+  }
+
+  .stack .card {
+    font-size: 14px;
+    padding: 16px;
+  }
+
+  .side {
+    display: none;
+  }
+
+  .corner-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+
+  #contactBtn {
+    font-size: 12px;
+    bottom: 10px;
+  }
+
+  #popup {
+    width: 90%;
+    padding: 25px 20px;
+  }
+
+  #popup h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  #popupMessage {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .modal-content {
+    max-width: 95%;
+    max-height: 80vh;
+  }
+
+  #aboutModal {
+    padding: 20px;
+  }
+
+  #aboutModal iframe {
+    height: 80vh;
+  }
+}
