@@ -460,60 +460,44 @@
   text-decoration: line-through;
 }
 
-@media screen and (max-width: 768px) {
-  body {
-    overflow: auto;
-    height: auto;
-    width: auto;
-  }
-
+@media screen and (max-width: 480px) {
   .stack-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* ✅ 두 열로 카드 나열 */
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);  /* 💡 3열 유지 */
+    gap: 14px;
     padding: 20px;
-    place-content: center;
+    height: auto;
+    width: 100%;
   }
 
   .stack {
-    width: 100% !important;  /* 그리드 셀에 맞추기 */
-    height: auto !important;
-    aspect-ratio: 3 / 2;      /* 비율 유지 */
+    width: 100% !important;
+    height: 90px !important;                /* 높이 고정 (화면에 맞게) */
   }
 
   .stack .card {
-    font-size: 14px;
-    padding: 16px;
-  }
-
-  .side {
-    display: none;
+    font-size: 11px;
+    padding: 10px;
   }
 
   .corner-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+  }
+
+  .side {
+    display: none; /* 좌우 정보 숨김 */
   }
 
   #contactBtn {
-    font-size: 12px;
-    bottom: 10px;
+    font-size: 11px;
+    bottom: 8px;
   }
 
   #popup {
-    width: 90%;
-    padding: 25px 20px;
-  }
-
-  #popup h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-
-  #popupMessage {
-    font-size: 13px;
-    padding: 10px 16px;
+    width: 95%;
+    padding: 20px;
   }
 
   .modal-content {
