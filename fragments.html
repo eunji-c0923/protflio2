@@ -3,24 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fragments – Full View</title>
+  <title>Fragments with Tabs</title>
   <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Pretendard', sans-serif;
-      background-color: #f9f9f9;
-      background-image:
-        linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-      background-size: 20px 20px;
+      background: #f9f9f9;
       color: #333;
     }
 
-
     .fragments {
       padding: 60px 30px;
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
       text-align: center;
     }
@@ -64,35 +59,80 @@
     }
 
     .tab-content.active {
-      display: flex;
-      flex-direction: column;
-      gap: 64px;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
     }
 
-    .work-item {
-      max-width: 100%;
-      text-align: center;
-    }
-
-    .work-item img {
-      width: 100%;
-      max-width: 720px;
-      height: auto;
+    .card {
+      position: relative;
+      overflow: hidden;
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s ease;
     }
 
-    .work-item img:hover {
-      transform: scale(1.02);
+    .card img {
+      width: 100%;
+      display: block;
+      transition: opacity 0.3s ease;
     }
 
-    .caption {
-      margin-top: 16px;
-      font-size: 16px;
-      color: #444;
-      line-height: 1.6;
+    .card:hover img {
+      opacity: 0.3;
+    }
+
+    .card::after {
+      content: "클릭해서 보기";
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    /* 모달 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 40px;
+      width: 90%;
+      max-width: 480px;
+      border-radius: 16px;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #aaa;
     }
 
     @keyframes fadeIn {
@@ -109,72 +149,61 @@
     <!-- Tabs -->
     <div class="tabs">
       <button class="tab-btn active" data-tab="unfinished">미완성</button>
-      <button class="tab-btn" data-tab="rejected">아쉬운</button>
+      <button class="tab-btn" data-tab="rejected">별로인</button>
       <button class="tab-btn" data-tab="etc">기타</button>
     </div>
 
     <!-- Tab Content: 미완성 -->
     <div class="tab-content active" id="unfinished">
-      <div class="work-item">
-        <img src="img/41.jpg" alt="미완성1">
-        
-      </div>
-      <div class="work-item">
-        <img src="img/42.jpg" alt="미완성2">
-        <p class="caption">방향을 잡지 못해 미완성 된 홈페이지.</p>
+      <div class="card" onclick="openModal('modal1')">
+        <img src="images/fragment1.jpg" alt="미완성1" />
       </div>
     </div>
 
     <!-- Tab Content: 별로인 -->
     <div class="tab-content" id="rejected">
-      <div class="work-item">
-        <img src="img/43.jpg" alt="아쉬운1">
-        <p class="caption">완성했지만 마음에 들지 않았던 팜플렛.</p>
-      </div>
-      <div class="work-item">
-        <img src="img/44.jpg" alt="아쉬운2">
-        <p class="caption">최종 채택이 되었지만 아쉬운 디자인.</p>
-      </div>
-      <div class="work-item">
-        <img src="img/45.jpg" alt="아쉬운3">
-        <p class="caption">기획과 맞지 않아 폐기된 작업물.</p>
-      </div>
-      <div class="work-item">
-        <img src="img/46.jpg" alt="아쉬운4">
-        <p class="caption">디자인은 괜찮았지만 매칭 실패.</p>
-      </div>
-      <div class="work-item">
-        <img src="img/52.jpg" alt="아쉬운5">
-        <p class="caption">과한 연출로 어긋난 시안.</p>
+      <div class="card" onclick="openModal('modal2')">
+        <img src="images/fragment2.jpg" alt="별로인1" />
       </div>
     </div>
 
     <!-- Tab Content: 기타 -->
     <div class="tab-content" id="etc">
-      <div class="work-item">
-        <img src="img/18.jpg" alt="기타1">
-        <p class="caption">실험적 색감 연습.</p>
-      </div>
-      <div class="work-item">
-        <img src="img/19.jpg" alt="기타2">
-        <p class="caption">촬영의도와 벗어난 컨셉</p>
-      </div>
-      <div class="work-item">
-        <img src="img/20.jpg" alt="기타3">
-        <p class="caption">보정 연습용 작업.</p>
-      </div>
-      <div class="work-item">
-        <img src="img/21.jpg" alt="기타4">
-        <p class="caption">보정 연습용 작업.</p>
-      </div>
-      <div class="work-item">
-        <img src="img/22.jpg" alt="기타5">
-        <p class="caption">레이아웃 테스트.</p>
+      <div class="card" onclick="openModal('modal3')">
+        <img src="images/fragment3.jpg" alt="기타1" />
       </div>
     </div>
   </section>
 
+  <!-- Modal 1 -->
+  <div class="modal" id="modal1">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h2>미완성 드로잉</h2>
+      <p>작업 중단된 이유와 현재 고민 중인 방향성을 설명할 수 있어요.</p>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="modal" id="modal2">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <h2>별로인 디자인</h2>
+      <p>의도는 좋았지만 최종적으로 제외된 디자인입니다.</p>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="modal" id="modal3">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+      <h2>기타 테스트</h2>
+      <p>실험적 시도나 자유 연습 결과물들을 모았습니다.</p>
+    </div>
+  </div>
+
   <script>
+    // 탭 기능
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
 
@@ -186,6 +215,22 @@
         tabContents.forEach(c => c.classList.remove('active'));
         document.getElementById(btn.dataset.tab).classList.add('active');
       });
+    });
+
+    // 모달 기능
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") {
+        document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
+      }
     });
   </script>
 </body>
